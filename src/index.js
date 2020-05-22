@@ -1,42 +1,47 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ConnectedRouter } from "connected-react-router";
+import { IntlProvider } from "react-intl";
+import AppLocale from "./translations";
 import history from "utils/history";
 import * as serviceWorker from "./serviceWorker";
-
-import LanguageProvider from "helpers/LanguageProvider";
 import configureStore from "./configureStore";
-import { translationMessages } from "./i18n";
 import "assets/scss/main.scss";
 import "./@fake-db";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 const initialState = {};
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById("root");
 
 const LazyApp = React.lazy(() => import("containers"));
-
-const MainApp = (messages) => {
+const options = ["az", "en"];
+const MainApp = () => {
+  const [lang, setLang] = useState("az");
+  const currentAppLocale = AppLocale[lang];
   return (
     <Provider store={store}>
-      <LanguageProvider messages={messages}>
+      <IntlProvider
+        locale={currentAppLocale.locale}
+        messages={currentAppLocale.messages}
+      >
         <ConnectedRouter history={history}>
           <Suspense fallback={<div className="loading" />}>
+            <Dropdown
+              options={options}
+              onChange={(a) => setLang(a.value)}
+              value={lang}
+              placeholder="Select lang"
+            />
             <LazyApp />
           </Suspense>
         </ConnectedRouter>
-      </LanguageProvider>
+      </IntlProvider>
     </Provider>
   );
 };
 
-const render = ReactDOM.render(<MainApp />, MOUNT_NODE);
-
-if (module.hot) {
-  module.hot.accept(["./i18n", "containers/App"], () => {
-    ReactDOM.unmountComponentAtNode(MOUNT_NODE);
-    render(translationMessages);
-  });
-}
+ReactDOM.render(<MainApp />, MOUNT_NODE);
 
 serviceWorker.unregister();

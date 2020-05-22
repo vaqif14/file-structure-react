@@ -5,7 +5,6 @@ import history from "utils/history";
 
 export default function createReducer(injectedReducers = {}) {
   const rootReducer = combineReducers({
-    language: require("helpers/LanguageProvider/redux").reducer,
     auth: require("containers/App/Login/redux").reducer,
     router: connectRouter(history),
     ...injectedReducers,
