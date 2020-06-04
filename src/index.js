@@ -8,7 +8,7 @@ let color = localStorage.getItem(themeColorStorageKey)
 localStorage.setItem(themeColorStorageKey, color);
 
 let render = () => {
-  import("./assets/css/theme/app." + color + ".scss").then((x) => {
+  import("./assets/css/theme/" + color + ".scss").then((x) => {
     require("./App");
   });
 };
