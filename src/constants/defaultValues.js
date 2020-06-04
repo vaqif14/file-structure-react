@@ -1,2 +1,2 @@
 export const defaultColor = "light";
-export const themeColorStorageKey="__color"
+export const themeColorStorageKey="color"

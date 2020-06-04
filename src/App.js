@@ -9,6 +9,8 @@ import * as serviceWorker from "./serviceWorker";
 import configureStore from "./configureStore";
 import "./@fake-db";
 
+import TopnavDarkSwitch from "layouts/Navs/Topnav.DarkSwitch";
+
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
@@ -32,12 +34,15 @@ const MainApp = () => {
       >
         <ConnectedRouter history={history}>
           <Suspense fallback={<div className="loading" />}>
-            <Dropdown
-              options={options}
-              onChange={(a) => setLang(a.value)}
-              value={lang}
-              placeholder="Select lang"
-            />
+            <div className="col-md-6">
+              <Dropdown
+                options={options}
+                onChange={(a) => setLang(a.value)}
+                value={lang}
+                placeholder="Select lang"
+              />
+            </div>
+            <TopnavDarkSwitch />
             <LazyApp />
           </Suspense>
         </ConnectedRouter>

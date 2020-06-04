@@ -1,4 +1,34 @@
+html {
+  width: 100%;
+  height: 100%;
+  background: $background-color;
+}
+
+:root {
+  --theme-color-1: #{$theme-color-1};
+  --theme-color-2: #{$theme-color-2};
+  --theme-color-3: #{$theme-color-3};
+  --theme-color-4: #{$theme-color-4};
+  --theme-color-5: #{$theme-color-5};
+  --theme-color-6: #{$theme-color-6};
+  --theme-color-1-10: #{rgba($theme-color-1, 0.1)};
+  --theme-color-2-10: #{rgba($theme-color-2, 0.1)};
+  --theme-color-3-10: #{rgba($theme-color-3, 0.1)};
+  --theme-color-4-10: #{rgba($theme-color-4, 0.1)};
+  --theme-color-5-10: #{rgba($theme-color-5, 0.1)};
+  --theme-color-6-10: #{rgba($theme-color-6, 0.1)};
+
+  --primary-color: #{$primary-color};
+  --foreground-color: #{$foreground-color};
+  --separator-color: #{$separator-color};
+}
+
+#root {
+  height: 100%;
+}
+
 body {
+  font-family: "Comfortaa", sans-serif;
   font-size: 0.8rem;
   font-weight: 400;
   color: $primary-color;
@@ -15,5 +45,107 @@ body {
         height: 100%;
       }
     }
+  }
+}
+h1 {
+  font-size: 1.75rem;
+  padding-bottom: 10px;
+  display: inline-block;
+
+  @include respond-below(sm) {
+    font-size: 1.3rem;
+    padding-top: 0.5rem;
+  }
+}
+
+h2 {
+  font-size: 1.4rem;
+
+  @include respond-below(sm) {
+    font-size: 1.1rem;
+  }
+}
+
+h3 {
+  font-size: 1.3rem;
+
+  @include respond-below(sm) {
+    font-size: 1rem;
+  }
+}
+
+h3 {
+  font-size: 1.2rem;
+
+  @include respond-below(sm) {
+    font-size: 1rem;
+  }
+}
+
+h4 {
+  font-size: 1.15rem;
+
+  @include respond-below(sm) {
+    font-size: 0.9rem;
+  }
+}
+
+h5 {
+  font-size: 1.1rem;
+
+  @include respond-below(sm) {
+    font-size: 0.9rem;
+  }
+}
+
+h6 {
+  font-size: 1rem;
+
+  @include respond-below(sm) {
+    font-size: 0.85rem;
+  }
+}
+
+hr {
+  border-top: 1px solid $separator-color;
+}
+
+.disable-text-selection {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+::selection {
+  background: lighten($theme-color-3, 20%);
+}
+
+::-moz-selection {
+  background: lighten($theme-color-3, 20%);
+}
+
+a {
+  color: $primary-color;
+  transition: color 200ms;
+
+  &:hover,
+  &:active {
+    text-decoration: initial;
+    color: $theme-color-1;
+  }
+}
+
+.btn-primary {
+  background-color: $theme-color-1;
+  border-color: $theme-color-1;
+  color: $button-text-color;
+
+  &:hover {
+    color: $button-text-color;
+    background-color: darken($theme-color-1, 8%);
+    border-color: darken($theme-color-1, 8%);
   }
 }
