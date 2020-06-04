@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import hoistNonReactStatics from "hoist-non-react-statics";
 import { ReactReduxContext } from "react-redux";
 
@@ -41,7 +41,8 @@ export default ({ key, saga, mode }) => (WrappedComponent) => {
 
 const useInjectSaga = ({ key, saga, mode }) => {
   const context = React.useContext(ReactReduxContext);
-  React.useEffect(() => {
+  // eslint-disable-next-line
+  useEffect(() => {
     const injectors = getInjectors(context.store);
     injectors.injectSaga(key, { saga, mode });
 

@@ -1,0 +1,19 @@
+body {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: $primary-color;
+  background: $background-color;
+
+  &.background {
+    height: 100%;
+
+    main {
+      margin: 0 !important;
+      height: 100%;
+
+      .container {
+        height: 100%;
+      }
+    }
+  }
+}
