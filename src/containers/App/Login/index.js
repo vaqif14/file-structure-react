@@ -31,6 +31,10 @@ function Login({ dispatch, intl }) {
         <p className="text-center">
           <IntlMessages id="login" />
         </p>
+        <p className="text-left">
+          login: vaqif14@gmail.com <br />
+          password:123
+        </p>
         <div className="form-group">
           <input
             name="email"
@@ -62,7 +66,7 @@ function Login({ dispatch, intl }) {
 
 const mapStateToProps = createStructuredSelector({});
 
-export function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
   return { dispatch };
 }
 

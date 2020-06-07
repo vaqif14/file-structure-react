@@ -10,7 +10,7 @@ export function injectReducerFactory(store, isValid) {
 
     invariant(
       isString(key) && !isEmpty(key) && isFunction(reducer),
-      "(app/utils...) injectReducer: Expected `reducer` to be a reducer function"
+      "(src/utils...) injectReducer: Expected `reducer` to be a reducer function"
     );
     if (
       Reflect.has(store.injectedReducers, key) &&

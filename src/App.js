@@ -34,15 +34,16 @@ const MainApp = () => {
       >
         <ConnectedRouter history={history}>
           <Suspense fallback={<div className="loading" />}>
-            <div className="col-md-6">
+            <div className="d-flex justify-content-center col-md-12 align-items-center">
               <Dropdown
                 options={options}
                 onChange={(a) => setLang(a.value)}
                 value={lang}
                 placeholder="Select lang"
               />
+              <span className='p mr-2 ml-2'>Switch color</span>
+              <TopnavDarkSwitch />
             </div>
-            <TopnavDarkSwitch />
             <LazyApp />
           </Suspense>
         </ConnectedRouter>

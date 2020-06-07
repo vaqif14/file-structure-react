@@ -1,8 +1,6 @@
 import React, { Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
-// import Profile from "./Profile";
-
 const Landing = ({ history }) => {
   return (
     <div className="d-flex justify-content-around align-item-center">
@@ -34,7 +32,6 @@ function Member({ match }) {
           path={`${match.url}member`}
           render={(props) => <Landing {...props} />}
         />
-        {console.log(match.url)}
         <Route
           path={`${match.url}member/profile`}
           render={(props) => <p>Salam</p>}
